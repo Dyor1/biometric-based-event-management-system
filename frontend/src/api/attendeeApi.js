@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api/attendees',
+  baseURL: 'https://biometric-based-event-management-system.onrender.com/api/attendees',
 });
 
 export const registerAttendee = (data) => API.post('/register-attendee', data);
