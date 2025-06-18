@@ -13,7 +13,7 @@ const App = () => {
   const [exporting, setExporting] = useState(false);
 
   const fetchAttendees = async () => {
-    const res = await axios.get('http://localhost:5000/api/attendees');
+    const res = await axios.get('https://biometric-based-event-management-system.onrender.com/api/attendees');
     setAttendees(res.data);
   };
 
@@ -24,7 +24,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
+    const socket = io('https://biometric-based-event-management-system.onrender.com');
     socket.on('realtime-update', (data) => {
       setNotification(`✅ ${data.name} just checked in`);
       setTimeout(() => setNotification(''), 5000);
@@ -57,7 +57,7 @@ const App = () => {
 
   const handleSendReminder = async () => {
     try {
-      await axios.post('http://localhost:5000/api/attendees/send-reminders');
+      await axios.post('https://biometric-based-event-management-system.onrender.com/api/attendees/send-reminders');
       alert('✅ Reminder emails sent!');
     } catch (err) {
       alert('❌ Failed to send reminders.');
@@ -67,7 +67,7 @@ const App = () => {
 
   const handleSendMissed = async () => {
     try {
-      await axios.post('http://localhost:5000/api/attendees/send-missed');
+      await axios.post('https://biometric-based-event-management-system.onrender.com/api/attendees/send-missed');
       alert('✅ "We Missed You" emails sent!');
     } catch (err) {
       alert('❌ Failed to send missed-you emails.');
